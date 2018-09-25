@@ -12,7 +12,7 @@ Quick start
 
 1. Installation::
 
-   python setup.py install
+   `python setup.py install`
 
 2. Add "drf_exception_handler" to your INSTALLED_APPS setting like this::
 
@@ -21,9 +21,9 @@ Quick start
         'drf_exception_handler',
     ]
 
-3. Run migrations
+3. Run migrations::
 
-    python manage.py migrate drf_exception_handler
+    `python manage.py migrate drf_exception_handler`
     
 4. Set `drf_exception_handler.views.exception_handler` as your `EXCEPTION_HANDLER` setting like this::
 
