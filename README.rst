@@ -20,7 +20,9 @@ Quick start
         ...
         'drf_exception_handler',
     ]
+
 3. Run migrations
+
     python manage.py migrate drf_exception_handler
     
 4. Set `drf_exception_handler.views.exception_handler` as your `EXCEPTION_HANDLER` setting like this::
