@@ -10,16 +10,20 @@ Based on raised exception this exception handler will set appropriate http respo
 Quick start
 -----------
 
-1. Add "drf_exception_handler" to your INSTALLED_APPS setting like this::
+1. Installation::
+
+   python setup.py install
+
+2. Add "drf_exception_handler" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = [
         ...
         'drf_exception_handler',
     ]
-2. Run migrations
+3. Run migrations
     python manage.py migrate drf_exception_handler
     
-3. Set `drf_exception_handler.views.exception_handler` as your `EXCEPTION_HANDLER` setting like this::
+4. Set `drf_exception_handler.views.exception_handler` as your `EXCEPTION_HANDLER` setting like this::
 
     REST_FRAMEWORK = {
         ...
@@ -27,7 +31,7 @@ Quick start
 
     }
 
-3. Optional: Configure http response status::
+5. Optional: Configure http response status::
 
     DRF_STATUS_CODE_MAP = {"rest_framework.exceptions.NotAuthenticated": 401}
 
