@@ -33,7 +33,7 @@ def get_deep_text(data, key=None):
         return get_deep_text(data[key], key)
     else:
         try:
-            if isinstance(data, six.string_types):
+            if isinstance(data, six.string_types) or data.__class__.__name__ == '__proxy__':
                 raise TypeError()
             return get_deep_text(next(iter(data)), key)
         except TypeError:
