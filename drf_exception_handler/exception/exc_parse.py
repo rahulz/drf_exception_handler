@@ -29,7 +29,11 @@ def get_deep_text(data, key=None):
 
     """
     if isinstance(data, dict):
-        key = next(iter(data.keys()))
+        try:
+            key = next(iter(data.keys()))
+        except:
+            return ""
+            
         return get_deep_text(data[key], key)
     else:
         try:
