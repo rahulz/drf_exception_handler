@@ -28,15 +28,14 @@ def error_response(data, display_text=None, error_code=None, exc_type='Exception
         'data': extra_data
     }
 
-    if settings.DEBUG:
-        err['debug_data'] = data,
-        err['debug_type'] = exc_type
-        try:
-            if settings.DRF_CUSTOM_ERROR_CODES_IN_DB:
-                if not ErrorHash.objects.filter(hash_code=error_code).exists():
-                    ErrorHash.objects.create(hash_code=error_code, error=display_text, http_status=http_status,
-                                             exc_type=exc_type)
-        except (OperationalError, AttributeError):
-            pass
+    err['debug_data'] = data,
+    err['debug_type'] = exc_type
+#     try:
+#         if settings.DRF_CUSTOM_ERROR_CODES_IN_DB:
+#             if not ErrorHash.objects.filter(hash_code=error_code).exists():
+#                 ErrorHash.objects.create(hash_code=error_code, error=display_text, http_status=http_status,
+#                                          exc_type=exc_type)
+#     except (OperationalError, AttributeError):
+#         pass
 
     return Response(err, http_status)
