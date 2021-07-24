@@ -29,17 +29,20 @@ def get_deep_text(data, key=None):
 
     """
     if isinstance(data, dict):
-        try:
-            key = next(iter(data.keys()))
-        except:
-            return ""
-            
+        key = next(iter(data.keys()))
         return get_deep_text(data[key], key)
     else:
         try:
             if isinstance(data, six.string_types) or data.__class__.__name__ == '__proxy__':
                 raise TypeError()
-            return get_deep_text(next(iter(data)), key)
+            it = iter(data)
+            nxt = next(it)
+            try:
+                while not nxt:
+                    nxt = next(it)
+            except StopIteration:
+                nxt = ""
+            return get_deep_text(nxt, key)
         except TypeError:
             if key not in ['non_field_errors', 'detail', None]:
                 return xstr('%s:%s' % (key, data))
